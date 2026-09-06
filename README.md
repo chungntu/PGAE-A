@@ -24,7 +24,8 @@ PGAE-A/
 |   |-- features/                        # precomputed 906-feature matrices
 |   |-- experiments/                     # model training, evaluation, figures
 |   `-- figures/                         # figure sources, data, rendered PNGs
-|-- revision/                            # analyses added during major revision
+|-- major_revision/                      # everything added after peer review (see its own README)
+|   |-- README.md
 |   |-- code/                            # one script per new analysis
 |   |-- data/                            # copies of the feature matrices
 |   |-- results/                         # JSON/CSV outputs backing the response letter
@@ -36,7 +37,7 @@ PGAE-A/
 ## Data and feature extraction
 
 The precomputed feature matrices are included in `code/features/` (and mirrored
-in `revision/data/`), so every script in this repository runs without the raw
+in `major_revision/data/`), so every script in this repository runs without the raw
 dataset or the feature-extraction pipeline. Raw Z24 acceleration data is not
 redistributed here; it is available from KU Leuven on request:
 https://bwk.kuleuven.be/bwm/z24.
@@ -90,16 +91,16 @@ python make_fig5_knee_window.py
 
 ## Reproducing the major-revision analyses
 
-`revision/code/` contains one script per new analysis added in response to the
+`major_revision/code/` contains one script per new analysis added in response to the
 reviewers: redundancy vs. attention weight, settlement-state sensitivity,
 constant-feature removal, independent calibration, leave-one-state-out
 validation, alternative one-class baselines, operational metrics, a
 cluster-bootstrap confidence interval, and the regenerated Figure 8. Each
-script reads its input from `revision/data/` and writes to `revision/results/`
-or `revision/figures/`, e.g.:
+script reads its input from `major_revision/data/` and writes to `major_revision/results/`
+or `major_revision/figures/`, e.g.:
 
 ```powershell
-cd revision/code
+cd major_revision/code
 python redundancy_analysis.py
 python settlement_sensitivity.py
 python alt_baselines.py
@@ -121,7 +122,7 @@ python export_png.py
 ```
 
 - Figures 1, 4, 6, 7, 8, 9, and 10 were regenerated at higher resolution during
-  the revision; their sources and rendered PNGs are in `revision/figures/`.
+  the revision; their sources and rendered PNGs are in `major_revision/figures/`.
 
 ## Compiling the manuscript and supplementary material
 
