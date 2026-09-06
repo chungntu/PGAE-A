@@ -29,3 +29,9 @@ desktop.ini
 # ---- Raw Z24 data (not redistributed; available from KU Leuven) ----
 # Precomputed feature matrices (X_*_new.npy) ARE tracked; raw .mat files are not.
 *.mat
+
+# ---- Feature-extraction code kept locally for reference only ----
+# This is prior work (adapted from Abdrabo 2024), not redistributed on GitHub.
+# Only the .py files here are ignored; the precomputed .npy matrices above them
+# are still tracked.
+code/features/*.py
