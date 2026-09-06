@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Autoencoder Backbone</title>
+<style>
+  body { margin: 0; background: #fff; display: flex; justify-content: center; padding: 20px; }
+  svg text { font-family: 'Times New Roman', Times, serif; }
+</style>
+</head>
+<body>
+<svg width="820" height="370" viewBox="0 0 820 370" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="ar" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0,0 9,3.5 0,7" fill="#444"/>
+    </marker>
+  </defs>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!--     TRAPEZOID CONNECTIONS — Encoder (green),       -->
+  <!--     Decoder (blue), meeting at bottleneck          -->
+  <!-- ══════════════════════════════════════════════════ -->
+
+  <!-- T1: encoder side -->
+  <polygon points="64,75 155,100 155,230 64,255"  fill="#c8e6c9" stroke="none"/>
+  <!-- T2: encoder side -->
+  <polygon points="179,100 264,129 264,201 179,230" fill="#a5d6a7" stroke="none"/>
+  <!-- T3: encoder side (near bottleneck) -->
+  <polygon points="288,129 368,150 368,180 288,201" fill="#81c784" stroke="none"/>
+  <!-- T4: decoder side (from bottleneck) -->
+  <polygon points="392,150 476,129 476,201 392,180" fill="#90caf9" stroke="none"/>
+  <!-- T5: decoder side -->
+  <polygon points="500,129 581,100 581,230 500,201" fill="#64b5f6" stroke="none"/>
+  <!-- T6: decoder side -->
+  <polygon points="605,100 696,75 696,255 605,230"  fill="#42a5f5" stroke="none"/>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!--                  LAYER BLOCKS                      -->
+  <!-- ══════════════════════════════════════════════════ -->
+
+  <!-- L1: input -->
+  <rect x="40"  y="75"  width="24" height="180" rx="3" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.8"/>
+  <!-- L2 -->
+  <rect x="155" y="100" width="24" height="130" rx="3" fill="#c8e6c9" stroke="#2e7d32" stroke-width="1.8"/>
+  <!-- L3 -->
+  <rect x="264" y="129" width="24" height="72"  rx="3" fill="#a5d6a7" stroke="#388e3c" stroke-width="1.8"/>
+  <!-- L4: bottleneck z -->
+  <rect x="368" y="150" width="24" height="30"  rx="3" fill="#e53935" stroke="#b71c1c" stroke-width="2.2"/>
+  <!-- L5 -->
+  <rect x="476" y="129" width="24" height="72"  rx="3" fill="#90caf9" stroke="#1565c0" stroke-width="1.8"/>
+  <!-- L6 -->
+  <rect x="581" y="100" width="24" height="130" rx="3" fill="#64b5f6" stroke="#1565c0" stroke-width="1.8"/>
+  <!-- L7: output -->
+  <rect x="696" y="75"  width="24" height="180" rx="3" fill="#bbdefb" stroke="#1565c0" stroke-width="1.8"/>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!--      LABELS: x, z (+ Bottleneck above), x̂         -->
+  <!-- ══════════════════════════════════════════════════ -->
+
+  <!-- x above L1 -->
+  <text x="52"  y="60" text-anchor="middle" font-size="26.1" font-style="italic" font-weight="700" fill="#111">x</text>
+
+  <!-- Bottleneck label above z rect, z inside rect -->
+  <text x="380" y="143" text-anchor="middle" font-size="12.3" font-weight="700" fill="#111">Bottleneck</text>
+  <text x="380" y="170" text-anchor="middle" font-size="18.8" font-style="italic" font-weight="700" fill="#fff">z</text>
+
+  <!-- x̂ above L7 -->
+  <text x="708" y="60" text-anchor="middle" font-size="26.1" font-style="italic" font-weight="700" fill="#111">x̂</text>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!--     ReLU — centred vertically in each trapezoid    -->
+  <!-- ══════════════════════════════════════════════════ -->
+
+  <!-- Center of T1: y_center=(75+255)/2=165, x_center=(64+155)/2≈110 -->
+  <text x="110" y="169" text-anchor="middle" font-size="12.3" font-style="italic" fill="#1b5e20">ReLU</text>
+  <!-- Center of T2: y=(100+230)/2=165, x=(179+264)/2=221 -->
+  <text x="221" y="169" text-anchor="middle" font-size="12.3" font-style="italic" fill="#1b5e20">ReLU</text>
+  <!-- Center of T3: y=(129+201)/2=165, x=(288+368)/2=328 -->
+  <text x="328" y="169" text-anchor="middle" font-size="12.3" font-style="italic" fill="#1b5e20">ReLU</text>
+  <!-- Center of T4: y=(150+180+129+201)/4=165, x=(392+476)/2=434 -->
+  <text x="434" y="169" text-anchor="middle" font-size="12.3" font-style="italic" fill="#0d47a1">ReLU</text>
+  <!-- Center of T5: y=(129+201)/2=165, x=(500+581)/2=540 -->
+  <text x="540" y="169" text-anchor="middle" font-size="12.3" font-style="italic" fill="#0d47a1">ReLU</text>
+  <!-- T6: linear output (no activation) -->
+  <text x="651" y="169" text-anchor="middle" font-size="12.3" font-style="italic" fill="#0d47a1">linear</text>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!--     GENERIC SIZE LABELS — symbolic, not numeric    -->
+  <!-- ══════════════════════════════════════════════════ -->
+
+  <text x="52"  y="270" text-anchor="middle" font-size="16" font-style="italic" fill="#111">d</text>
+  <text x="167" y="246" text-anchor="middle" font-size="16" font-style="italic" fill="#111">d₁</text>
+  <text x="276" y="215" text-anchor="middle" font-size="16" font-style="italic" fill="#111">d₂</text>
+  <text x="380" y="196" text-anchor="middle" font-size="16" font-style="italic" fill="#111">k</text>
+  <text x="488" y="215" text-anchor="middle" font-size="16" font-style="italic" fill="#111">d₂</text>
+  <text x="593" y="246" text-anchor="middle" font-size="16" font-style="italic" fill="#111">d₁</text>
+  <text x="708" y="270" text-anchor="middle" font-size="16" font-style="italic" fill="#111">d</text>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!--          SECTION BRACKETS + LABELS                 -->
+  <!-- ══════════════════════════════════════════════════ -->
+
+  <!-- Encoder bracket -->
+  <line x1="52"  y1="288" x2="380" y2="288" stroke="#2e7d32" stroke-width="1.4"/>
+  <line x1="52"  y1="283" x2="52"  y2="293" stroke="#2e7d32" stroke-width="1.4"/>
+  <line x1="380" y1="283" x2="380" y2="293" stroke="#2e7d32" stroke-width="1.4"/>
+  <text x="216" y="306" text-anchor="middle" font-size="17.4" font-weight="700" fill="#2e7d32">Encoder</text>
+
+  <!-- Decoder bracket -->
+  <line x1="380" y1="288" x2="708" y2="288" stroke="#1565c0" stroke-width="1.4"/>
+  <line x1="380" y1="283" x2="380" y2="293" stroke="#1565c0" stroke-width="1.4"/>
+  <line x1="708" y1="283" x2="708" y2="293" stroke="#1565c0" stroke-width="1.4"/>
+  <text x="544" y="306" text-anchor="middle" font-size="17.4" font-weight="700" fill="#1565c0">Decoder</text>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!--         Residuals ANNOTATION                       -->
+  <!-- ══════════════════════════════════════════════════ -->
+
+  <!-- Arrow from right of L7 -->
+  <line x1="720" y1="165" x2="752" y2="165"
+        stroke="#444" stroke-width="1.6" marker-end="url(#ar)"/>
+
+  <!-- Residuals label -->
+  <text x="757" y="162" text-anchor="start" font-size="17.4" font-style="italic" font-weight="700" fill="#111">Residuals</text>
+
+</svg>
+</body>
+</html>

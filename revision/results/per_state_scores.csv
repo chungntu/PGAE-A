@@ -1,0 +1,18 @@
+state,name,class,full_mean_score,full_std_score,excl_settlement_mean_score,excl_settlement_std_score
+1,S1 undamaged reference,healthy,0.089024,0.159398,0.073257,0.107921
+2,S2 reference (settlement sys installed),healthy,0.065095,0.028189,0.058870,0.022167
+3,S3 reference measurement,healthy,0.097728,0.128852,0.077579,0.111917
+4,S4 pier settlement 20mm,healthy,0.063660,0.064842,0.339010,0.706002
+5,S5 pier settlement 40mm,healthy,0.093052,0.145084,0.915764,1.194124
+6,S6 pier settlement 80mm,healthy,0.156487,0.420014,0.736362,0.849320
+7,S7 pier settlement 95mm,healthy,0.062760,0.071144,0.181253,0.161044
+8,"S8 pier lifted, new reference",healthy,0.161642,0.448161,0.145885,0.464973
+9,S9 concrete spalling 12m2,damaged,0.587505,1.088720,0.523571,0.910169
+10,S10 concrete spalling 24m2,damaged,0.198716,0.189973,0.189748,0.174639
+11,S11 landslide at abutment,damaged,0.455402,0.548302,0.469031,0.592212
+12,S12 concrete hinge failure,damaged,0.274438,0.127881,0.310150,0.170222
+13,S13 failure of 2 anchor heads,damaged,0.344230,0.256216,0.355922,0.248083
+14,S14 failure of 4 anchor heads,damaged,0.448549,0.560104,0.474874,0.569713
+15,S15 rupture of 54 tendon wires,damaged,0.396172,0.516967,0.425976,0.533112
+16,S16 rupture of 100 tendon wires,damaged,0.481614,0.475166,0.461614,0.441398
+17,S17 rupture of 154 tendon wires,damaged,0.342244,0.586363,0.346562,0.563938
