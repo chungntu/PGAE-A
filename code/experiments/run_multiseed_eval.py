@@ -4,14 +4,14 @@
 #       Hanoi, Vietnam
 #   (2) Nha Trang University, 02 Nguyen Dinh Chieu, Khanh Hoa, Vietnam
 #
-# Code and reproducible baselines for the PGAE-A study: Physics-Informed
+# Code and reproducible baselines for the PGAE-A study: Physics-Guided
 # Autoencoders with Unsupervised Feature Attention for One-Class Structural
 # Damage Detection (Z24 bridge benchmark).
 # =============================================================================
 
 # -*- coding: utf-8 -*-
 """
-z24_piae_multiseed_kneewin.py
+z24_pgae_multiseed_kneewin.py
 NEW FILE — 10-seed evaluation of PGAE-A with the AUTOMATIC knee-window
 log-midpoint temperature rule (no target retention fraction). For each seed:
 train AE on healthy-train; select beta as the geometric mean of [lower knee,
@@ -58,7 +58,7 @@ def auc(sd, sh):
     return roc_auc_score(np.r_[np.zeros(len(sh)), np.ones(len(sd))], np.r_[sh, sd])
 
 def beta_kneewin(mi):
-    """Automatic label-free beta: geometric mean of [lower knee, inflection]."""
+    """Automatic one-class beta: geometric mean of [lower knee, inflection]."""
     betas = np.geomspace(1e-3, 10, 2000); t = np.log10(betas)
     prs = np.empty(len(betas))
     for i,b in enumerate(betas):
@@ -118,12 +118,12 @@ def main():
     print(f"Elliptic: AUC {me:.4f} +/- {se_:.4f}   95%CI [{me-he:.3f},{me+he:.3f}]")
     print(f"paired (attn-plain): {diff.mean():.4f} +/- {diff.std(ddof=1):.4f}  p={p_val:.2e}")
     print(f"Hanley-McNeil SE at AUC={A:.3f}: {hm_se:.4f}")
-    (OUT/"piae_multiseed_kneewin.json").write_text(json.dumps({"rows":rows,"summary":{
+    (OUT/"pgae_multiseed_kneewin.json").write_text(json.dumps({"rows":rows,"summary":{
         "beta_mean":mb,"beta_std":sb,"alpha_mean":mal,"alpha_std":sal,
-        "plain":{"mean":mp,"std":sp},"piae_a":{"mean":ma,"std":sa},"elliptic":{"mean":me,"std":se_},
+        "plain":{"mean":mp,"std":sp},"pgae_a":{"mean":ma,"std":sa},"elliptic":{"mean":me,"std":se_},
         "paired_diff_mean":float(diff.mean()),"paired_diff_std":float(diff.std(ddof=1)),
         "paired_t_p":float(p_val),"hanley_mcneil_se":float(hm_se),"n_damage":nD,"n_healthy_test":nHt}}, indent=2))
-    print("saved results/piae_multiseed_kneewin.json")
+    print("saved results/pgae_multiseed_kneewin.json")
 
 if __name__ == "__main__":
     main()

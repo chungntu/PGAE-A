@@ -1,7 +1,7 @@
 # =============================================================================
 # NEW FILE — response to Reviewer 1 #4 / Reviewer 2 #3 (RMAT-2026-0601, round 1)
 #
-# Reuses the exact AE architecture / training loop / label-free beta-selection
+# Reuses the exact AE architecture / training loop / one-class beta-selection
 # rule from code/experiments/run_multiseed_eval.py (copied here verbatim, not
 # imported, to keep this folder self-contained) so the reproduced baseline AUC
 # is directly comparable to the published Table 5 numbers.
@@ -28,7 +28,7 @@ from torch import nn
 from sklearn.metrics import roc_auc_score
 from scipy import stats
 
-_HERE = Path(__file__).resolve().parent            # response/code
+_HERE = Path(__file__).resolve().parent            # code/experiments
 DATA = _HERE.parent / "features"
 OUT = _HERE / "results"
 OUT.mkdir(parents=True, exist_ok=True)

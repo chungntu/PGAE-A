@@ -2,11 +2,11 @@
 # NEW FILE — response to Reviewer 1 #5, Reviewer 1 #6, Reviewer 2 #15
 # (RMAT-2026-0601, round 1)
 #
-# Reuses the exact AE architecture / training loop / label-free beta-selection
+# Reuses the exact AE architecture / training loop / one-class beta-selection
 # rule from code/experiments/run_multiseed_eval.py (copied here verbatim, not
 # imported) so results are directly comparable to the published Table 5.
 #
-# Adds five label-free alternatives to PGAE-A's softmax attention rule, all
+# Adds five one-class alternatives to PGAE-A's softmax attention rule, all
 # trained on the SAME 256-window healthy training pool and scored on the SAME
 # evaluation set (324 damaged + 32 healthy test-pool windows), ten seeds each:
 #
@@ -35,7 +35,7 @@ from sklearn.decomposition import PCA
 from sklearn.svm import OneClassSVM
 from sklearn.ensemble import IsolationForest
 
-_HERE = Path(__file__).resolve().parent            # response/code
+_HERE = Path(__file__).resolve().parent            # code/experiments
 DATA = _HERE.parent / "features"
 OUT = _HERE / "results"
 OUT.mkdir(parents=True, exist_ok=True)
@@ -106,7 +106,7 @@ def main():
     Xht = Xte[yte < NH]                                       # 32 healthy test-pool rows (evaluation set, unchanged)
     print(f"Xh_all={Xh_all.shape} Xd={Xd.shape} Xht={Xht.shape}")
 
-    methods = ["ae_plain", "piae_a", "var_norm", "mad_norm", "pca_spe", "ocsvm", "iso_forest"]
+    methods = ["ae_plain", "pgae_a", "var_norm", "mad_norm", "pca_spe", "ocsvm", "iso_forest"]
     results = {m: [] for m in methods}
 
     for seed in range(N_SEEDS):
@@ -132,7 +132,7 @@ def main():
         mi = (r_train ** 2).mean(0)
         beta = beta_kneewin(mi)
         l = -mi / beta; l -= l.max(); a = np.exp(l); a /= a.sum()
-        results["piae_a"].append(auc((a * r_d ** 2).sum(1), (a * r_ht ** 2).sum(1)))
+        results["pgae_a"].append(auc((a * r_d ** 2).sum(1), (a * r_ht ** 2).sum(1)))
 
         # Variance-normalized residual (R1#5)
         var_i = r_train.var(axis=0, ddof=1)
@@ -171,7 +171,7 @@ def main():
 
     print("\n=== SUMMARY (10 seeds) ===")
     name_map = {
-        "ae_plain": "AE-plain (reproduction)", "piae_a": "PGAE-A (reproduction)",
+        "ae_plain": "AE-plain (reproduction)", "pgae_a": "PGAE-A (reproduction)",
         "var_norm": "Variance-normalized residual", "mad_norm": "MAD-normalized residual",
         "pca_spe": f"PCA squared prediction error (k={PCA_K})",
         "ocsvm": "One-Class SVM (RBF, nu=0.05)", "iso_forest": "Isolation Forest",

@@ -36,7 +36,7 @@ from torch import nn
 from scipy import stats
 from sklearn.linear_model import RidgeCV
 
-_HERE = Path(__file__).resolve().parent            # response/code
+_HERE = Path(__file__).resolve().parent            # code/experiments
 DATA = _HERE.parent / "features"
 OUT = _HERE / "results"
 OUT.mkdir(parents=True, exist_ok=True)

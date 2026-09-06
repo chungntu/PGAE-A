@@ -4,7 +4,7 @@
 #       Hanoi, Vietnam
 #   (2) Nha Trang University, 02 Nguyen Dinh Chieu, Khanh Hoa, Vietnam
 #
-# Code and reproducible baselines for the PGAE-A study: Physics-Informed
+# Code and reproducible baselines for the PGAE-A study: Physics-Guided
 # Autoencoders with Unsupervised Feature Attention for One-Class Structural
 # Damage Detection (Z24 bridge benchmark).
 # =============================================================================
@@ -12,7 +12,7 @@
 # -*- coding: utf-8 -*-
 """
 z24_fig5_knee_window.py
-NEW FILE — paper Figure 5: automatic, label-free temperature selection.
+NEW FILE — paper Figure 5: automatic, one-class temperature selection.
 Top panel: PR(beta) from healthy residuals, with the operating window
 [lower knee, inflection] shaded and the chosen log-midpoint beta*.
 Bottom panel: held-out AUC(beta) (labels used for validation only), confirming

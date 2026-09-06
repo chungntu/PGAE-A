@@ -19,7 +19,7 @@ from torch import nn
 from sklearn.metrics import roc_auc_score
 from scipy import stats
 
-_HERE = Path(__file__).resolve().parent            # response/code
+_HERE = Path(__file__).resolve().parent            # code/experiments
 DATA = _HERE.parent / "features"
 OUT = _HERE / "results"
 OUT.mkdir(parents=True, exist_ok=True)
