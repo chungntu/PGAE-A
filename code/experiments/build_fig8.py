@@ -1,8 +1,7 @@
 # =============================================================================
-# NEW FILE — response to Reviewer 2 #12. Builds the revised fig8.html from
-# the isolated data in review vong 1/response/figures/control_with_pool.json.
-# Writes review vong 1/response/figures/fig8.html (overwrites the COPY only;
-# the original code/figures/fig8.html is untouched).
+# Builds fig8.html (train vs. held-out shading, added in response to
+# Reviewer 2 #12) from code/figures/control_with_pool.json.
+# Writes code/figures/fig8.html.
 # =============================================================================
 import json
 from pathlib import Path

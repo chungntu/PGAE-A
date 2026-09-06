@@ -11,6 +11,7 @@ const D={"rh": [0.004869, 0.003977, 0.004244, 0.004027, 0.00475, 0.004115, 0.004
 const cv=document.getElementById('cv');
 const ctx=cv.getContext('2d');
 const W=860,H=380,mt=38,mb=52,ml=62,mr=24,gap=54;
+const DPR=4; cv.width=W*DPR; cv.height=H*DPR; cv.style.width=W+'px'; cv.style.height=H+'px'; ctx.scale(DPR,DPR);
 const pw=(W-ml-mr-gap)/2, ph=H-mt-mb, N=D.top;
 
 function movAvg(arr,w){return arr.map((_,i)=>{const lo=Math.max(0,i-Math.floor(w/2)),hi=Math.min(arr.length,i+Math.ceil(w/2));return arr.slice(lo,hi).reduce((a,b)=>a+b,0)/(hi-lo);});}

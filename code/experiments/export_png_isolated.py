@@ -1,7 +1,6 @@
 # =============================================================================
-# NEW FILE — isolated PNG export for the 5 resolution-fixed figures
-# (fig4, fig6, fig7, fig8, fig9). Reads HTML from review vong 1/response/figures/
-# and writes PNG to the same folder. Does not touch code/figures/.
+# Renders the higher-resolution figures (fig4, fig6, fig7, fig8, fig9) from
+# their HTML sources in code/figures/ to PNG in the same folder.
 # =============================================================================
 import os
 import asyncio

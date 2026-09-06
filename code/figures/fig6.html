@@ -9,6 +9,7 @@ const D={"delta_norm": [0.000112, 0.00126768, 0.04530403, 0.09899933, 0.20464142
 const cv=document.getElementById('cv');
 const ctx=cv.getContext('2d');
 const W=700,H=390;
+const DPR=4; cv.width=W*DPR; cv.height=H*DPR; cv.style.width=W+'px'; cv.style.height=H+'px'; ctx.scale(DPR,DPR);
 const FONT="'Times New Roman', Times, serif";
 
 // ═══════════════════════════════════════════

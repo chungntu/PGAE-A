@@ -1,10 +1,6 @@
 # =============================================================================
 # NEW FILE — response to Reviewer 2 #12 (RMAT-2026-0601, round 1)
 #
-# Standalone, isolated analysis. Reads ONLY the copied feature matrices in
-# review vong 1/response/data/. Does not import from, or write into, the
-# original code/ tree.
-#
 # Reproduces the EXACT seed-0 "representative run" computation used by
 # code/experiments/run_figure_data.py to build code/figures/fig8.html's
 # control.json (same SEED/NH/BOTT/VAL constants, same AE architecture, same
@@ -23,7 +19,7 @@ import torch
 from torch import nn
 
 _HERE = Path(__file__).resolve().parent
-DATA = _HERE.parent / "data"
+DATA = _HERE.parent / "features"
 OUT = _HERE.parent / "figures"
 OUT.mkdir(parents=True, exist_ok=True)
 

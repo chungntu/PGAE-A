@@ -1,10 +1,6 @@
 # =============================================================================
 # NEW FILE — response to Reviewer 2 #10 (RMAT-2026-0601, round 1)
 #
-# Standalone, isolated analysis. Reads ONLY the copied feature matrices in
-# review vong 1/response/data/ (copies of code/features/X_*_new.npy). Does not
-# import from, or write into, the original code/ tree.
-#
 # Reviewer's request, verbatim: "Such constant or near-constant features
 # should preferably be removed, followed by a sensitivity analysis of their
 # effect on beta, participation ratio, and AUC."
@@ -24,8 +20,8 @@ from sklearn.metrics import roc_auc_score
 from scipy import stats
 
 _HERE = Path(__file__).resolve().parent            # response/code
-DATA = _HERE.parent / "data"                        # response/data (copied matrices)
-OUT = _HERE.parent / "results"
+DATA = _HERE.parent / "features"
+OUT = _HERE / "results"
 OUT.mkdir(parents=True, exist_ok=True)
 
 NH, BOTT, N_SEEDS, VAL = 8, 32, 10, 0.2

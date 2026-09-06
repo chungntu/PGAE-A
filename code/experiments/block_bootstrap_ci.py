@@ -1,10 +1,6 @@
 # =============================================================================
 # NEW FILE — response to Reviewer 2 #17 (RMAT-2026-0601, round 1)
 #
-# Standalone, isolated analysis. Reads ONLY the copied feature matrices in
-# review vong 1/response/data/ (copies of code/features/X_*_new.npy). Does not
-# import from, or write into, the original code/ tree.
-#
 # Reviewer's request, verbatim: "The statistical analysis should account for
 # dependence among windows from the same structural state and repeated
 # evaluation on the same test set."
@@ -30,8 +26,8 @@ from torch import nn
 from sklearn.metrics import roc_auc_score
 
 _HERE = Path(__file__).resolve().parent
-DATA = _HERE.parent / "data"
-OUT = _HERE.parent / "results"
+DATA = _HERE.parent / "features"
+OUT = _HERE / "results"
 OUT.mkdir(parents=True, exist_ok=True)
 
 NH, BOTT, VAL = 8, 32, 0.2

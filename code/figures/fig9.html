@@ -11,6 +11,7 @@ const D={"sp_h": [394.8783, 276.7605, 265.70117, 234.56128, 211.02365, 324.53381
 const cv=document.getElementById('cv');
 const ctx=cv.getContext('2d');
 const W=860,H=340,mt=36,mb=58,ml=60,mr=24,gap=54;
+const DPR=4; cv.width=W*DPR; cv.height=H*DPR; cv.style.width=W+'px'; cv.style.height=H+'px'; ctx.scale(DPR,DPR);
 const pw=(W-ml-mr-gap)/2, ph=H-mt-mb;
 
 function silverman(data){
@@ -102,7 +103,7 @@ function drawPanel(hData,dData,x0,titleStr){
 }
 
 drawPanel(A.h,A.d,ml,'(a) AE-plain');
-drawPanel(B.h,B.d,ml+pw+gap,'(b) PIAE-A — attention');
+drawPanel(B.h,B.d,ml+pw+gap,'(b) PGAE-A — attention');
 
 // shared axis labels
 ctx.fillStyle='#333'; ctx.font=`13px 'Times New Roman', Times, serif`; ctx.textAlign='center';

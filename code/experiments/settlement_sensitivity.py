@@ -1,10 +1,6 @@
 # =============================================================================
 # NEW FILE — response to Reviewer 1 #4 / Reviewer 2 #3 (RMAT-2026-0601, round 1)
 #
-# Standalone, isolated analysis. Reads ONLY the copied feature matrices in
-# review vong 1/response/data/ (copies of code/features/X_*_new.npy). Does not
-# import from, or write into, the original code/ tree.
-#
 # Reuses the exact AE architecture / training loop / label-free beta-selection
 # rule from code/experiments/run_multiseed_eval.py (copied here verbatim, not
 # imported, to keep this folder self-contained) so the reproduced baseline AUC
@@ -33,8 +29,8 @@ from sklearn.metrics import roc_auc_score
 from scipy import stats
 
 _HERE = Path(__file__).resolve().parent            # response/code
-DATA = _HERE.parent / "data"                        # response/data (copied matrices)
-OUT = _HERE.parent / "results"
+DATA = _HERE.parent / "features"
+OUT = _HERE / "results"
 OUT.mkdir(parents=True, exist_ok=True)
 
 NH, BOTT, N_SEEDS, VAL = 8, 32, 10, 0.2

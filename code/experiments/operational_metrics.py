@@ -1,10 +1,6 @@
 # =============================================================================
 # NEW FILE — response to Reviewer 2 #5 (RMAT-2026-0601, round 1)
 #
-# Standalone, isolated analysis. Reads ONLY the copied feature matrices in
-# review vong 1/response/data/. Does not import from, or write into, the
-# original code/ tree.
-#
 # Reviewer's request: complement ROC-AUC with operational metrics (sensitivity,
 # specificity/false-alarm rate, balanced accuracy) at the 95th-percentile
 # healthy alarm threshold already used in the main text (Sec. 3.3).
@@ -21,8 +17,8 @@ import torch
 from torch import nn
 
 _HERE = Path(__file__).resolve().parent
-DATA = _HERE.parent / "data"
-OUT = _HERE.parent / "results"
+DATA = _HERE.parent / "features"
+OUT = _HERE / "results"
 OUT.mkdir(parents=True, exist_ok=True)
 
 NH, BOTT, N_SEEDS, VAL = 8, 32, 10, 0.2

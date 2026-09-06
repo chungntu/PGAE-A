@@ -11,6 +11,7 @@ const DATA = {"train": [0.996369, 0.988891, 0.976979, 0.957778, 0.932409, 0.9135
 const cv = document.getElementById('cv');
 const ctx = cv.getContext('2d');
 const W=620, H=360, ml=68, mr=24, mt=32, mb=52;
+const DPR=4; cv.width=W*DPR; cv.height=H*DPR; cv.style.width=W+'px'; cv.style.height=H+'px'; ctx.scale(DPR,DPR);
 const pw=W-ml-mr, ph=H-mt-mb;
 const tr=DATA.train, vl=DATA.val, N=tr.length;
 const ystep=0.25;

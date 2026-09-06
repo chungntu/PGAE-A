@@ -1,10 +1,6 @@
 # =============================================================================
 # NEW FILE — response to Reviewer 1 #1 (RMAT-2026-0601, round 1)
 #
-# Standalone, isolated analysis. Reads ONLY the copied feature matrices in
-# review vong 1/response/data/ (copies of code/features/X_*_new.npy). Does not
-# import from, or write into, the original code/ tree.
-#
 # Tests whether the attention weight PIAE-A assigns to each feature is
 # explained by redundancy with the OTHER 905 features, rather than by
 # something specific to that feature's reconstruction reliability.
@@ -41,8 +37,8 @@ from scipy import stats
 from sklearn.linear_model import RidgeCV
 
 _HERE = Path(__file__).resolve().parent            # response/code
-DATA = _HERE.parent / "data"                        # response/data (copied matrices)
-OUT = _HERE.parent / "results"
+DATA = _HERE.parent / "features"
+OUT = _HERE / "results"
 OUT.mkdir(parents=True, exist_ok=True)
 
 NH, BOTT, N_SEEDS, VAL = 8, 32, 10, 0.2
