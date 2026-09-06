@@ -1139,50 +1139,49 @@ physics-derived features and weighting them with a one-class attention
 mechanism is automatic, outperforms expert pre-selection, and remains within the
 one-class setting.
 
-Several limitations frame this work. First, a one-class detector cannot reach
-the accuracy of one that is permitted to use damage labels. PGAE-A weights the
-features that \textcolor{red}{are reconstructed most reliably in the healthy state}, assuming a
-departure from health will show up in exactly those features. This assumption is
-imperfect: a feature can be highly predictable in the healthy state yet barely
-change under damage, so it receives a large weight but adds no detection signal.
-Narrowing this gap without labels is the central open problem, with contrastive
-or robust attention, feature self-attention, mechanics-informed priors, and
-explicit EOV normalization as promising directions. Second, the estimate is
+\textcolor{red}{Several limitations frame this work. First, a one-class
+detector cannot reach the accuracy of one permitted to use damage labels:
+PGAE-A weights features that are reconstructed most reliably in the healthy
+state, but a feature can be highly predictable in health yet barely change
+under damage, receiving a large weight while adding no detection signal;
+narrowing this gap without labels---via contrastive or robust attention,
+feature self-attention, mechanics-informed priors, or explicit EOV
+normalization---is the central open problem. Second, the estimate is
 limited by the small healthy test set rather than the number of runs: the
-run-to-run dispersion ($\sigma\approx0.014$) is already below the finite-test
-standard error ($\approx0.033$), so a larger test set or leave-one-scenario-out
-evaluation would help more than additional runs. Third, a single structure over
-a short campaign limits environmental coverage; validation across structures,
-seasons, and long-term monitoring---and whether attention weights transfer
-between structures---is left for future work. Finally, feature extraction is fast: on a laptop
-CPU the FFT-accelerated front end processes each $163.8$~s window in only about
-$4.5\%$ of its duration, comfortably faster than real time. Once the attention
-weights are computed from healthy data and then fixed, scoring reduces to a
-simple, transparent rule light enough for on-site (edge) hardware.
-
-\textcolor{red}{Several further limitations concern how the reported estimate
-should be read. Four of the eight healthy states are pier settlements up to
-$95$~mm, and the reported AUC depends materially on their presence in the
-training pool: at matched training-pool size, excluding them costs roughly
-thirteen points of AUC (Section~\ref{sec:settlement}). The feature bank is
-deliberately redundant, so part of what the attention mechanism rewards in
-any single feature may reflect correlation with other features in the bank
-rather than a property specific to the healthy structure; the weights should
-be read as an operational reconstruction-reliability ranking, not as
-evidence of which physical quantity the structure controls. Supplementary
-Material S3 tests this directly: across the non-constant features, an
-independent redundancy score computed on held-out healthy data correlates
-with attention weight at $\rho=0.611$, and most of the twenty most heavily
-weighted features duplicate another feature in the bank almost exactly.
-Windows from the
-same structural state are correlated rather than independent: accounting
-for this in validation (leave-one-state-out) and in the statistical analysis
-(a cluster bootstrap over states) each lowers the estimate or widens its
+run-to-run dispersion ($\sigma\approx0.014$) is already below the
+finite-test standard error ($\approx0.033$), so a larger test set or
+leave-one-scenario-out evaluation would help more than additional runs.
+Third, a single structure over a short campaign limits environmental
+coverage; validation across structures, seasons, and long-term
+monitoring, and whether attention weights transfer between structures, is
+left for future work. Fourth, four of the eight healthy states are pier
+settlements up to $95$~mm, and the reported AUC depends materially on
+their presence in the training pool: excluding them at matched
+training-pool size costs roughly thirteen points of AUC
+(Section~\ref{sec:settlement}). Fifth, the feature bank is deliberately
+redundant, so part of what the attention mechanism rewards in a feature
+may reflect correlation with others rather than a property of the healthy
+structure itself---an independent redundancy score correlates with
+attention weight at $\rho=0.611$ on held-out healthy data, and most of the
+twenty most heavily weighted features duplicate another almost exactly
+(Supplementary Material S3); the weights are therefore a
+reconstruction-reliability ranking, not evidence of which physical
+quantity the structure controls. Sixth, windows from the same structural
+state are correlated rather than independent: accounting for this in
+validation (leave-one-state-out) and in the statistical analysis (a
+cluster bootstrap over states) each lowers the estimate or widens its
 uncertainty interval modestly, without changing the central conclusion
 (Section~\ref{sec:main}; Supplementary Material S4--S5). These are
 properties of the reported estimate itself, not items deferred to future
 work, and a reader should weigh them alongside the headline numbers in
 Table~\ref{tab:main}.}
+
+\textcolor{red}{Despite these limitations, feature extraction remains fast and
+deployment-ready: on a laptop CPU, the FFT-accelerated front end processes
+each $163.8$~s window in only about $4.5\%$ of its duration, comfortably
+faster than real time, and once attention weights are fixed from healthy
+data, scoring reduces to a simple, transparent rule light enough for
+on-site (edge) hardware.}
 
 % =====================================================================
 \color{red}
