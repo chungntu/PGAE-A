@@ -311,11 +311,12 @@ four non-reference channels paired with R1V: $49$ time-domain descriptors
 per channel ($245$ features), $74$ PSD-shape descriptors per channel
 ($370$ features), and the same $74$ descriptors applied to the four
 transmissibility functions ($296$ features). This section lists every
-descriptor. The exact implementation is the single source of truth and is
-available in full at the repository named in the Data and Code Availability
-statement of the main text, specifically \texttt{code/features/utils4.py}
-(time-domain) and \texttt{code/features/run\_eda\_pipeline.py}, function
-\texttt{frequency\_domain\_features} (PSD/transmissibility).
+descriptor, compiled directly from our own feature-extraction implementation
+so that the definitions and settings below are exact. As stated in the Data
+and Code Availability statement of the main text, this feature-extraction
+code adapts prior work and is not itself redistributed in the repository;
+the precomputed feature matrices are provided there instead, so this section
+is the authoritative reference for every descriptor's definition.
 
 \subsection{Time-domain descriptors (49 per channel)}
 
