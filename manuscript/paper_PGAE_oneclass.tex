@@ -896,17 +896,15 @@ $[0.705, 0.895]$, both wider than the Hanley--McNeil value of $0.032$.
 Supplementary Material S5 reports the full comparison, including a
 window-level bootstrap that ignores the state structure for reference.}
 
-\textcolor{red}{ROC-AUC is threshold-free; at the specific $95$th-percentile
-healthy alarm threshold used throughout this section, the detector attains a
-sensitivity of $0.289 \pm 0.164$ and a specificity of $0.875 \pm 0.021$ on the
-held-out evaluation set, for a balanced accuracy of $0.582 \pm 0.079$. The
-observed false-alarm rate, $0.125 \pm 0.021$, exceeds the $5\%$ design
-target because it is measured on the genuinely held-out healthy test-pool
-windows rather than on the validation-normal data the threshold is
-calibrated from. Sensitivity at this conservative operating point is
-modest---correctly flagging roughly three in ten damaged windows without
-exceeding the healthy false-alarm budget---which is why ROC-AUC, not tied
-to any single threshold, remains the primary metric for this comparison.}
+\textcolor{red}{ROC-AUC is threshold-free; at the $95$th-percentile healthy
+alarm threshold used throughout this section, the detector attains a
+sensitivity of $0.289 \pm 0.164$, a specificity of $0.875 \pm 0.021$, and a
+balanced accuracy of $0.582 \pm 0.079$ on the held-out evaluation set. The
+false-alarm rate, $0.125 \pm 0.021$, exceeds the $5\%$ design target
+because it is measured on genuinely held-out healthy windows rather than
+the validation-normal data used to calibrate the threshold---the same
+generalization gap that keeps sensitivity modest, and why ROC-AUC remains
+the primary metric here.}
 
 \begin{figure}[htbp]
 \centering
