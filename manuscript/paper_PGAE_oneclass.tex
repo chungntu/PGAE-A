@@ -607,12 +607,9 @@ only two are time-domain---mirroring the finding in Table~\ref{tab:blocks} that
 those two blocks outperform time-domain statistics.
 \textcolor{red}{One of the two time-domain contributors, the coefficient of
 variation (rank $4$, Table~\ref{tab:top20}), is computed by the standard
-\texttt{tsfresh} \texttt{variation\_coefficient} function (Supplementary
-Material S6) rather than custom code. Across all $612$ windows this column
-has no NaN or infinite value, but one window has a standardized value
-$22.9$ times the column's standard deviation, consistent with the
-near-zero detrended mean that can make this ratio numerically unstable; the
-remaining $611$ windows fall within $\pm 3$ standard deviations.}
+\texttt{tsfresh} \texttt{variation\_coefficient} function rather than
+custom code; Supplementary Material S6 reports a numerical-stability check
+across all windows.}
 
 \begin{figure}[htbp]
 \centering

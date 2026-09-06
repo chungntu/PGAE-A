@@ -332,6 +332,13 @@ therefore identically zero for every window; one further pair, ``fraction of
 zero values'' and ``count of zeros,'' duplicates the same tsfresh
 calculator. Together, these account for part of the constant and redundant
 columns discussed in Sections~\ref{sec:constant} and~\ref{sec:redundancy}.
+The coefficient of variation (\#8), one of the two time-domain descriptors
+among the twenty largest score contributors (Section 3.4 of the main
+text), can become numerically unstable after detrending, when the mean
+approaches zero. Across all $612$ windows this column has no NaN or infinite value,
+but one window has a standardized value $22.9$ times the column's standard
+deviation, consistent with a near-zero detrended mean; the remaining $611$
+windows fall within $\pm3$ standard deviations.
 
 \begin{longtable}{@{}p{0.5cm}p{5.8cm}p{7.8cm}@{}}
 \caption{The 49 time-domain descriptors, in the order they appear in the
