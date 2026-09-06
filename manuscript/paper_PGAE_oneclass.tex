@@ -1154,34 +1154,14 @@ leave-one-scenario-out evaluation would help more than additional runs.
 Third, a single structure over a short campaign limits environmental
 coverage; validation across structures, seasons, and long-term
 monitoring, and whether attention weights transfer between structures, is
-left for future work. Fourth, four of the eight healthy states are pier
-settlements up to $95$~mm, and the reported AUC depends materially on
-their presence in the training pool: excluding them at matched
-training-pool size costs roughly thirteen points of AUC
-(Section~\ref{sec:settlement}). Fifth, the feature bank is deliberately
-redundant, so part of what the attention mechanism rewards in a feature
-may reflect correlation with others rather than a property of the healthy
-structure itself---an independent redundancy score correlates with
-attention weight at $\rho=0.611$ on held-out healthy data, and most of the
-twenty most heavily weighted features duplicate another almost exactly
-(Supplementary Material S3); the weights are therefore a
-reconstruction-reliability ranking, not evidence of which physical
-quantity the structure controls. Sixth, windows from the same structural
-state are correlated rather than independent: accounting for this in
-validation (leave-one-state-out) and in the statistical analysis (a
-cluster bootstrap over states) each lowers the estimate or widens its
-uncertainty interval modestly, without changing the central conclusion
-(Section~\ref{sec:main}; Supplementary Material S4--S5). These are
-properties of the reported estimate itself, not items deferred to future
-work, and a reader should weigh them alongside the headline numbers in
-Table~\ref{tab:main}.}
-
-\textcolor{red}{Despite these limitations, feature extraction remains fast and
-deployment-ready: on a laptop CPU, the FFT-accelerated front end processes
-each $163.8$~s window in only about $4.5\%$ of its duration, comfortably
-faster than real time, and once attention weights are fixed from healthy
-data, scoring reduces to a simple, transparent rule light enough for
-on-site (edge) hardware.}
+left for future work. Fourth, treating pier settlements as healthy
+materially affects the reported AUC (Section~\ref{sec:settlement}). Fifth,
+the feature bank's redundancy means attention weights partly reflect
+correlation among features rather than a property specific to the healthy
+structure (Supplementary Material S3). Sixth, windows from the same
+structural state are correlated, which the validation and statistical
+analysis account for but do not eliminate (Section~\ref{sec:main};
+Supplementary Material S4--S5).}
 
 % =====================================================================
 \color{red}
