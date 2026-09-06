@@ -135,10 +135,6 @@ pdflatex paper_PGAE_oneclass_supplementary.tex
 
 ## Authors and acknowledgments
 
-The work was developed at the University of Transport and Communications and
-Nha Trang University and was funded by Nha Trang University under grant
-TR2025-13-07.
-
 The feature bank builds on the reference implementation of:
 
 > A. Abdrabo, "Application of Online Anomaly Detection Using One-Class
