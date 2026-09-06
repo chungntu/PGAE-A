@@ -4,15 +4,15 @@
 #       Hanoi, Vietnam
 #   (2) Nha Trang University, 02 Nguyen Dinh Chieu, Khanh Hoa, Vietnam
 #
-# Code and reproducible baselines for the PIAE-A study: Physics-Informed
-# Autoencoders with Unsupervised Feature Attention for Label-Free Structural
+# Code and reproducible baselines for the PGAE-A study: Physics-Informed
+# Autoencoders with Unsupervised Feature Attention for One-Class Structural
 # Damage Detection (Z24 bridge benchmark).
 # =============================================================================
 
 # -*- coding: utf-8 -*-
 """
 z24_piae_multiseed_kneewin.py
-NEW FILE — 10-seed evaluation of PIAE-A with the AUTOMATIC knee-window
+NEW FILE — 10-seed evaluation of PGAE-A with the AUTOMATIC knee-window
 log-midpoint temperature rule (no target retention fraction). For each seed:
 train AE on healthy-train; select beta as the geometric mean of [lower knee,
 inflection] of the PR(beta) curve (healthy residuals only); score plain and
@@ -114,7 +114,7 @@ def main():
     print(f"\n=== SUMMARY (N={N_SEEDS}, knee-window log-mid beta) ===")
     print(f"beta   : {mb:.4f} +/- {sb:.4f}    alpha: {mal:.3f} +/- {sal:.3f}")
     print(f"AE-plain: AUC {mp:.4f} +/- {sp:.4f}   95%CI [{mp-hp:.3f},{mp+hp:.3f}]")
-    print(f"PIAE-A  : AUC {ma:.4f} +/- {sa:.4f}   95%CI [{ma-ha:.3f},{ma+ha:.3f}]")
+    print(f"PGAE-A  : AUC {ma:.4f} +/- {sa:.4f}   95%CI [{ma-ha:.3f},{ma+ha:.3f}]")
     print(f"Elliptic: AUC {me:.4f} +/- {se_:.4f}   95%CI [{me-he:.3f},{me+he:.3f}]")
     print(f"paired (attn-plain): {diff.mean():.4f} +/- {diff.std(ddof=1):.4f}  p={p_val:.2e}")
     print(f"Hanley-McNeil SE at AUC={A:.3f}: {hm_se:.4f}")

@@ -15,11 +15,11 @@ without using any damage label.
 ```text
 PGAE-A/
 |-- manuscript/
-|   |-- paper_PIAE_oneclass.tex          # LaTeX manuscript source
-|   `-- paper_PIAE_oneclass.pdf          # compiled manuscript
+|   |-- paper_PGAE_oneclass.tex          # LaTeX manuscript source
+|   `-- paper_PGAE_oneclass.pdf          # compiled manuscript
 |-- supplementary/
-|   |-- paper_PIAE_oneclass_supplementary.tex
-|   `-- paper_PIAE_oneclass_supplementary.pdf   # Sections S1-S6
+|   |-- paper_PGAE_oneclass_supplementary.tex
+|   `-- paper_PGAE_oneclass_supplementary.pdf   # Sections S1-S6
 |-- code/
 |   |-- features/                        # precomputed 906-feature matrices
 |   |-- experiments/                     # model training, evaluation, and all reported analyses
@@ -125,12 +125,12 @@ or, for Figures 4, 6, 7, 8, and 9 specifically, with
 
 ```powershell
 cd manuscript
-pdflatex paper_PIAE_oneclass.tex
-pdflatex paper_PIAE_oneclass.tex
+pdflatex paper_PGAE_oneclass.tex
+pdflatex paper_PGAE_oneclass.tex
 
 cd ../supplementary
-pdflatex paper_PIAE_oneclass_supplementary.tex
-pdflatex paper_PIAE_oneclass_supplementary.tex
+pdflatex paper_PGAE_oneclass_supplementary.tex
+pdflatex paper_PGAE_oneclass_supplementary.tex
 ```
 
 ## Authors and acknowledgments

@@ -4,8 +4,8 @@
 #       Hanoi, Vietnam
 #   (2) Nha Trang University, 02 Nguyen Dinh Chieu, Khanh Hoa, Vietnam
 #
-# Code and reproducible baselines for the PIAE-A study: Physics-Informed
-# Autoencoders with Unsupervised Feature Attention for Label-Free Structural
+# Code and reproducible baselines for the PGAE-A study: Physics-Informed
+# Autoencoders with Unsupervised Feature Attention for One-Class Structural
 # Damage Detection (Z24 bridge benchmark).
 # =============================================================================
 
@@ -146,7 +146,7 @@ ev = damaged | (is_test & healthy)
 def auc_scores(s): return roc_auc_score(damaged[ev].astype(int), s[ev])
 auc_plain = auc_scores(scores_plain)
 auc_attn  = auc_scores(scores_attn)
-print(f"\nAUC (held-out): AE-plain={auc_plain:.4f}   PIAE-A={auc_attn:.4f}")
+print(f"\nAUC (held-out): AE-plain={auc_plain:.4f}   PGAE-A={auc_attn:.4f}")
 
 # ── contribution decomposition (fig6 + Table 3) ───────────────────────────────
 contrib = a[None,:]*r2_all
@@ -200,7 +200,7 @@ kde = {"sp_h":[round(v,5) for v in scores_plain[healthy].tolist()],
 # AUCs on ALL windows (as the KDE caption uses in-sample seed-0 illustration)
 auc_plain_all = roc_auc_score(damaged.astype(int), scores_plain)
 auc_attn_all  = roc_auc_score(damaged.astype(int), scores_attn)
-print(f"KDE AUC (all 612): AE-plain={auc_plain_all:.4f}  PIAE-A={auc_attn_all:.4f}")
+print(f"KDE AUC (all 612): AE-plain={auc_plain_all:.4f}  PGAE-A={auc_attn_all:.4f}")
 
 # ── feature profile (fig7) — sorted by attention weight desc ──────────────────
 rh = (r2_all[healthy]).mean(0); rd = (r2_all[damaged]).mean(0)

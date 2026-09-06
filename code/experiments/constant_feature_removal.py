@@ -7,7 +7,7 @@
 #
 # Removes the 70 constant features (std < 1e-9 on the healthy training pool,
 # same threshold as code/experiments/verify_constant_columns.py) from the
-# 906-feature bank, retrains PIAE-A end to end on the remaining 836 features,
+# 906-feature bank, retrains PGAE-A end to end on the remaining 836 features,
 # and compares beta, participation ratio, and AUC against the original
 # 906-feature protocol -- same ten-seed evaluation as Table 5.
 # =============================================================================

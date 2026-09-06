@@ -4,8 +4,8 @@
 #       Hanoi, Vietnam
 #   (2) Nha Trang University, 02 Nguyen Dinh Chieu, Khanh Hoa, Vietnam
 #
-# Code and reproducible baselines for the PIAE-A study: Physics-Informed
-# Autoencoders with Unsupervised Feature Attention for Label-Free Structural
+# Code and reproducible baselines for the PGAE-A study: Physics-Informed
+# Autoencoders with Unsupervised Feature Attention for One-Class Structural
 # Damage Detection (Z24 bridge benchmark).
 # =============================================================================
 

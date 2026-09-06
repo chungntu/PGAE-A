@@ -6,7 +6,7 @@
 # rule from code/experiments/run_multiseed_eval.py (copied here verbatim, not
 # imported) so results are directly comparable to the published Table 5.
 #
-# Adds five label-free alternatives to PIAE-A's softmax attention rule, all
+# Adds five label-free alternatives to PGAE-A's softmax attention rule, all
 # trained on the SAME 256-window healthy training pool and scored on the SAME
 # evaluation set (324 damaged + 32 healthy test-pool windows), ten seeds each:
 #
@@ -22,7 +22,7 @@
 #   4. One-Class SVM                  (R2#15)
 #   5. Isolation Forest               (R2#15)
 #
-# AE-plain and PIAE-A (attention) are recomputed from the same trained model
+# AE-plain and PGAE-A (attention) are recomputed from the same trained model
 # per seed as a reproduction check against the published 0.643 / 0.795.
 # =============================================================================
 import json
@@ -128,7 +128,7 @@ def main():
         # AE-plain
         results["ae_plain"].append(auc((r_d ** 2).sum(1), (r_ht ** 2).sum(1)))
 
-        # PIAE-A (softmax attention over healthy-residual reliability)
+        # PGAE-A (softmax attention over healthy-residual reliability)
         mi = (r_train ** 2).mean(0)
         beta = beta_kneewin(mi)
         l = -mi / beta; l -= l.max(); a = np.exp(l); a /= a.sum()
@@ -171,7 +171,7 @@ def main():
 
     print("\n=== SUMMARY (10 seeds) ===")
     name_map = {
-        "ae_plain": "AE-plain (reproduction)", "piae_a": "PIAE-A (reproduction)",
+        "ae_plain": "AE-plain (reproduction)", "piae_a": "PGAE-A (reproduction)",
         "var_norm": "Variance-normalized residual", "mad_norm": "MAD-normalized residual",
         "pca_spe": f"PCA squared prediction error (k={PCA_K})",
         "ocsvm": "One-Class SVM (RBF, nu=0.05)", "iso_forest": "Isolation Forest",

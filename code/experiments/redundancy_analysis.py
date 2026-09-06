@@ -1,7 +1,7 @@
 # =============================================================================
 # NEW FILE — response to Reviewer 1 #1 (RMAT-2026-0601, round 1)
 #
-# Tests whether the attention weight PIAE-A assigns to each feature is
+# Tests whether the attention weight PGAE-A assigns to each feature is
 # explained by redundancy with the OTHER 905 features, rather than by
 # something specific to that feature's reconstruction reliability.
 #
@@ -19,7 +19,7 @@
 # never sees in any capacity, so it is the correct "unseen" set for this
 # test. A high leave-one-out R^2 means feature i can be reconstructed from
 # the other 905 features alone, with no autoencoder involved -- i.e. it is
-# redundant with the rest of the bank, independent of PIAE-A entirely.
+# redundant with the rest of the bank, independent of PGAE-A entirely.
 #
 # Constant features (std ~ 0 on the healthy training pool, matching the
 # 1e-9 threshold already used in code/experiments/verify_constant_columns.py)
