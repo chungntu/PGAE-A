@@ -1140,13 +1140,12 @@ mechanism is automatic, outperforms expert pre-selection, and remains within the
 one-class setting.
 
 \textcolor{red}{Several limitations frame this work. First, a one-class
-detector cannot reach the accuracy of one permitted to use damage labels:
-PGAE-A weights features that are reconstructed most reliably in the healthy
-state, but a feature can be highly predictable in health yet barely change
-under damage, receiving a large weight while adding no detection signal;
-narrowing this gap without labels---via contrastive or robust attention,
-feature self-attention, mechanics-informed priors, or explicit EOV
-normalization---is the central open problem. Second, the estimate is
+detector cannot match the accuracy of one trained with damage labels.
+PGAE-A assumes a feature reconstructed reliably in health is also
+damage-sensitive, but this is not always true: some such features stay
+unchanged under damage, adding weight without adding detection signal.
+Closing this gap without labels remains the central open problem. Second,
+the estimate is
 limited by the small healthy test set rather than the number of runs: the
 run-to-run dispersion ($\sigma\approx0.014$) is already below the
 finite-test standard error ($\approx0.033$), so a larger test set or
