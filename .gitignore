@@ -11,6 +11,9 @@
 *.lof
 *.lot
 
+# ---- Word conversions (kept locally only, not published) ----
+*.docx
+
 # ---- Python ----
 __pycache__/
 *.py[cod]
