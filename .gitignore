@@ -11,7 +11,9 @@
 *.lof
 *.lot
 
-# ---- Word conversions (kept locally only, not published) ----
+# ---- Manuscript and supplementary (kept locally only, not published) ----
+manuscript/
+supplementary/
 *.docx
 
 # ---- Python ----
